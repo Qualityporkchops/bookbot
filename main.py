@@ -1,4 +1,5 @@
 from stats import num_words, num_char, chars_to_sorted_list
+import sys
     
 def get_book_text(filepath):
     
@@ -8,7 +9,11 @@ def get_book_text(filepath):
 
 
 def main():
-    filepath = "books/frankenstein.txt"
+    argv = sys.argv[1:] 
+    if len(argv) != 1 :
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    filepath = argv[0]
     text = get_book_text(filepath)
     num = num_words(text)
     char = num_char(text)
